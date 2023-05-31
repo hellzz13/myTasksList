@@ -12,7 +12,7 @@ import {useTaskList} from '../../context/TasksContexts';
 
 export const Home = () => {
   const [newTask, setNewTask] = React.useState('');
-  const {addTask} = useTaskList();
+  const {addTask, clearTasks} = useTaskList();
 
   const handleAddNewTask = () => {
     const data = {
@@ -37,6 +37,12 @@ export const Home = () => {
           style={styles.button}
           activeOpacity={0.7}>
           <Text style={styles.buttonText}>Adicionar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={clearTasks}
+          style={styles.secondButton}
+          activeOpacity={0.7}>
+          <Text style={styles.buttonText}>Limpar todas as tarefas</Text>
         </TouchableOpacity>
         <Text style={styles.titleTasks}>Minha tarefas</Text>
 
@@ -98,5 +104,13 @@ const styles = StyleSheet.create({
     color: '#f1f1f1',
     fontSize: 20,
     fontWeight: 'bold',
+  },
+
+  secondButton: {
+    backgroundColor: '#676767',
+    padding: 15,
+    borderRadius: 7,
+    alignItems: 'center',
+    marginTop: 20,
   },
 });

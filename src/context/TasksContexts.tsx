@@ -13,6 +13,7 @@ export interface ITask {
 export interface ITasksContext {
   tasks: ITask[];
   addTask(task: ITask): void;
+  clearTasks(): void;
 }
 
 const tasksData = '@MyTasks:Tasks';
@@ -44,9 +45,14 @@ export const TaskProvider: React.FC<IProps> = ({children}) => {
     }
   };
 
+  const clearTasks = async () => {
+    await AsyncStorage.removeItem(tasksData);
+    setData([]);
+  };
+
   return (
     // tasks recebe o valor de data como default
-    <TasksContext.Provider value={{tasks: data, addTask}}>
+    <TasksContext.Provider value={{tasks: data, addTask, clearTasks}}>
       {children}
     </TasksContext.Provider>
   );
