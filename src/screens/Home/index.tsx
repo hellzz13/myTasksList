@@ -20,6 +20,7 @@ export const Home = () => {
       title: newTask ? newTask : 'Task empty',
     };
     addTask(data);
+    setNewTask('');
   };
 
   return (
@@ -31,6 +32,7 @@ export const Home = () => {
           placeholder="Nova tarefa..."
           onChangeText={setNewTask}
           style={styles.input}
+          value={newTask}
         />
         <TouchableOpacity
           onPress={handleAddNewTask}
@@ -42,7 +44,7 @@ export const Home = () => {
           onPress={clearTasks}
           style={styles.secondButton}
           activeOpacity={0.7}>
-          <Text style={styles.buttonText}>Limpar todas as tarefas</Text>
+          <Text style={styles.buttonText}>Limpar lista de tarefas</Text>
         </TouchableOpacity>
         <Text style={styles.titleTasks}>Minha tarefas</Text>
 
